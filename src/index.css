@@ -3,4 +3,5 @@
   padding: 0px;
   box-sizing: border-box;
   font-family: "Castoro Titling", serif;
+  overflow-x: hidden;
 }
