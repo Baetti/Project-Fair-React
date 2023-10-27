@@ -13,7 +13,7 @@ function PFHome() {
       >
         <Row className="align-items-center p-5 ">
           <Col sm={12} md={6} className="">
-            <h1 className="" style={{ fontSize: "65px" }}>
+            <h1 className="" style={{ fontSize: "65px", color: "#1ABC9C" }}>
               {" "}
               <i className="fa-solid fa-circle-nodes fa-spin me-2"></i>PROJECT
               FAIR

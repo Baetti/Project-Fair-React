@@ -9,8 +9,8 @@ function Footer() {
     >
       <div className="footer d-flex justify-content-evenly w-100">
         <div style={{ width: "400px" }} className="website">
-          <h4>
-            <i class="fa-solid fa-circle-nodes fa-spin"></i>
+          <h4 style={{ color: "#1ABC9C" }}>
+            <i className="fa-solid fa-circle-nodes fa-spin"></i>
             {""} Project Fair
           </h4>
           <h6 style={{ color: "white" }}>
@@ -24,7 +24,7 @@ function Footer() {
         </div>
 
         <div className="links d-flex flex-column">
-          <h4>Links</h4>
+          <h4 style={{ color: "#1ABC9C" }}>Links</h4>
           <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
             Landing Page
           </Link>
@@ -37,7 +37,7 @@ function Footer() {
         </div>
 
         <div className="guides d-flex flex-column">
-          <h4>Guides</h4>
+          <h4 style={{ color: "#1ABC9C" }}>Guides</h4>
           <Link
             to={"https://react.dev/"}
             style={{ textDecoration: "none", color: "white" }}
@@ -59,7 +59,7 @@ function Footer() {
         </div>
 
         <div className="contact-us">
-          <h4>Contact Us</h4>
+          <h4 style={{ color: "#1ABC9C" }}>Contact Us</h4>
           <div className="sub d-flex mt-3">
             <input
               type="text"
