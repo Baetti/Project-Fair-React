@@ -1,8 +1,8 @@
 import React from "react";
-import { Container, Navbar } from "react-bootstrap";
+import { Button, Container, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function Header() {
+function Header({ insideDashboard }) {
   return (
     <Navbar
       style={{ backgroundColor: "#A569BD", zIndex: "1" }}
@@ -22,6 +22,11 @@ function Header() {
             Project Fair
           </Link>
         </Navbar.Brand>
+        {insideDashboard && (
+          <Button className="btn text-center ">
+            <i className="fa-solid fa-power-off me-1"></i>Log Out
+          </Button>
+        )}
       </Container>
     </Navbar>
   );

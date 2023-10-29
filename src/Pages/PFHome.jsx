@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import Projecticon from "../Assets/projecticon.png";
 import HomeProjects from "../Components/HomeProjects";
+import { Link } from "react-router-dom";
 
 function PFHome() {
+  const [isLoggedIn, setLoggedIn] = useState(false);
   return (
     <>
       {/* Landing Section */}
@@ -20,14 +22,29 @@ function PFHome() {
             </h1>
             <h3 className="ms-5">Our team is the key to creativity...</h3>
             <h4 className="ms-5">Think,Plan,Do...</h4>
-            <button
-              className="btn btn-warning mt-3 ms-5 "
-              style={{ color: "black" }}
-            >
-              {" "}
-              Get Started<i className="fa-solid fa-dice-five fa-spin ms-2"></i>
-              <i className="ms-2 fa-solid fa-arrow-right fa-beat"></i>
-            </button>
+            {isLoggedIn ? (
+              <Link
+                to={"/dashboard"}
+                className="btn btn-warning mt-3 ms-5 "
+                style={{ color: "black" }}
+              >
+                {" "}
+                Manage your Projects
+                <i className="fa-solid fa-dice-five fa-spin ms-2"></i>
+                <i className="ms-2 fa-solid fa-arrow-right fa-beat"></i>
+              </Link>
+            ) : (
+              <Link
+                to={"/login"}
+                className="btn btn-warning mt-3 ms-5 "
+                style={{ color: "black" }}
+              >
+                {" "}
+                Get Started
+                <i className="fa-solid fa-dice-five fa-spin ms-2"></i>
+                <i className="ms-2 fa-solid fa-arrow-right fa-beat"></i>
+              </Link>
+            )}
           </Col>
           <Col sm={12} md={6}>
             <img
