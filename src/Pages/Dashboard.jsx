@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Navbar, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import MyProjectsDash from "../Components/MyProjectsDash";
@@ -6,6 +6,12 @@ import MyProfileDash from "../Components/MyProfileDash";
 import Header from "../Components/Header";
 
 function Dashboard() {
+  const [username, setUsername] = useState("");
+  useEffect(() => {
+    if (localStorage.getItem("existingUser")) {
+      setUsername(JSON.parse(localStorage.getItem("existingUser")).username);
+    }
+  }, []);
   return (
     // Navigation Bar
     <>
@@ -13,7 +19,7 @@ function Dashboard() {
       <Row style={{ marginTop: "100px" }} className="w-100">
         <Col sm={12} md={8}>
           <h2 className="text-center mb-3">
-            Welcome <span className="text-success-emphasis">User</span>
+            Welcome <span className="text-success-emphasis">{username}</span>
           </h2>
           {/* My project section */}
           <MyProjectsDash />

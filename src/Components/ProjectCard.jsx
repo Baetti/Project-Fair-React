@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card, Col, Modal, Row } from "react-bootstrap";
-import Projectimg from "../Assets/projectimg.png";
+import Projectimg from "../Assets/mediaplayer.png";
 
 function ProjectCard() {
   const [show, setShow] = useState(false);
@@ -48,7 +48,7 @@ function ProjectCard() {
               rel="noreferrer"
               className="btn"
             >
-              <i class="fa-brands fa-github"></i>
+              <i className="fa-brands fa-github"></i>
             </a>
             <a
               href="https://media-playernetlify.netlify.app"
@@ -56,7 +56,7 @@ function ProjectCard() {
               rel="noreferrer"
               className="btn"
             >
-              <i class="fa-solid fa-link"></i>
+              <i className="fa-solid fa-link"></i>
             </a>
           </div>
         </Modal.Body>

@@ -1,0 +1,77 @@
+                                        Node JS
+                                   -----------------
+          Node.js is an open source, cross-platform runtime environment for developing server-side and networking applications. 
+        
+  1. Runtime Environment + JS library for JS
+  2. Features
+            - Extremely Faster
+            - Asynchronous
+            - Single Threaded with event loop
+            - Highly Scalable
+            - Open Source
+  
+  3. Node Js Global Objects
+
+            - It can access anywhere from node js app with out exporting/importing
+            - eg: console.log(), setTimeout(),...
+  
+  4. Node js Module System
+
+
+            - Each file in node js can consider as seperate Module. to reuse these module in another module use export and import statements
+
+            - to import module : use function require('module')
+
+            - to export module : 
+                       
+                       - use keyword export 
+                       - use keyword export default
+                       - use keyword module.exports / exports
+
+            - Built in module : 
+                       
+                       - fs : file system - handling file related events
+                       - http : generating http request
+                       - https : generating https request
+                       - events : work with EventEmitter
+                       - crypto : provide tools like hashing,encryption,etc.
+                       - process : used to provide currently curring process 
+                              
+                              - environmental variable
+
+  5. Node js Packages
+
+            - Used to help solving common problems
+            - collection of node module with package.json
+            - to install packages using npm
+            - package.json file : npm configuration file for a project
+                 
+            - package-lock.json : to hold versions of packages installed in a project
+            - node_modules : to hold copies of installed packages in a project
+  
+  6. Backend Concept 
+        
+        - Client-Server Architecture : sending request and response via http protocol
+
+        - API : Application Programming Interface : 
+                      This contract defines how the two communicate with each other using requests (to url) and responses.
+
+        - REST API : 
+                      API that conforms to the design principles of the REST, or representational state transfer architectural style.
+        
+                    - only pass http request with json data
+
+        - CRUD     :  Create(POST) ,Read(GET),Update(PUT) and Delete(DELETE)
+
+        - CORS      : Cross Origin Resource Sharing Protocol 
+
+
+                               EXPRESS JS 
+                          --------------------
+
+                        
+        1. Framework of Node js for client-server Application
+
+        2. Create a folder server
+
+        3. Inside server folder create a package.json file using command : npm init -y

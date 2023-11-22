@@ -1,10 +1,74 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, json, useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import LoginIcon from "../Assets/Login.png";
+import { loginAPI, registerAPI } from "../services/allApi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Auth({ register }) {
   const isRegisterForm = register ? true : false;
+  const [userData, setUserData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+
+  // console.log(userData);
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    const { username, email, password } = userData;
+    if (!username || !email || !password) {
+      toast.error("Please fill the form completely");
+    } else {
+      // api call
+      const res = await registerAPI(userData);
+      // console.log(res);
+      if (res.status === 200) {
+        toast.success(`${res.data.username} has successfully registered`);
+        // reset state
+        setUserData({
+          username: "",
+          email: "",
+          password: "",
+        });
+        navigate("/login");
+      } else {
+        toast.warning(res.response.data);
+      }
+    }
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const { email, password } = userData;
+    if (!email || !password) {
+      toast.error("Please fill the form completely");
+    } else {
+      // api call
+      const res = await loginAPI({ email, password });
+      console.log(res);
+      if (res.status === 200) {
+        //save res
+        localStorage.setItem(
+          "existingUser",
+          JSON.stringify(res.data.existingUser)
+        );
+        localStorage.setItem("Role", res.data.role);
+        sessionStorage.setItem("token", res.data.token);
+        // reset state
+        setUserData({
+          email: "",
+          password: "",
+        });
+        navigate("/");
+      } else {
+        toast.warning(res.response.data);
+      }
+    }
+  };
+
   return (
     <div
       style={{ width: "100%", height: "100vh" }}
@@ -43,6 +107,10 @@ function Auth({ register }) {
                   {isRegisterForm && (
                     <Form.Group className="mb-3" controlId="formBasicUsername">
                       <Form.Control
+                        value={userData.username}
+                        onChange={(e) =>
+                          setUserData({ ...userData, username: e.target.value })
+                        }
                         type="text"
                         placeholder="Enter your name"
                         style={{ boxShadow: "none" }}
@@ -52,6 +120,10 @@ function Auth({ register }) {
 
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Control
+                      value={userData.email}
+                      onChange={(e) =>
+                        setUserData({ ...userData, email: e.target.value })
+                      }
                       type="email"
                       placeholder="Enter your email"
                       style={{ boxShadow: "none" }}
@@ -60,6 +132,10 @@ function Auth({ register }) {
 
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Control
+                      value={userData.password}
+                      onChange={(e) =>
+                        setUserData({ ...userData, password: e.target.value })
+                      }
                       style={{ boxShadow: "none" }}
                       type="password"
                       placeholder="Enter your password"
@@ -69,6 +145,7 @@ function Auth({ register }) {
                   {isRegisterForm ? (
                     <div className="d-flex justify-content-center flex-column align-items-center w-100">
                       <Button
+                        onClick={handleRegister}
                         variant="success"
                         type="submit"
                         size="lg"
@@ -90,6 +167,7 @@ function Auth({ register }) {
                   ) : (
                     <div className="d-flex justify-content-center flex-column align-items-center">
                       <Button
+                        onClick={handleLogin}
                         variant="success"
                         type="submit"
                         size="lg"
@@ -115,6 +193,7 @@ function Auth({ register }) {
           </div>
         </div>
       </div>
+      <ToastContainer position="top-right" autoclose={2000} theme="colored" />
     </div>
   );
 }
